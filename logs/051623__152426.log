@@ -1,0 +1,16 @@
+[2023-05-16 15:24:27,049] 19 root - INFO - Exporting collection data as pandas dataframe
+[2023-05-16 15:24:27,049] 19 root - INFO - Reading data from database : aps and collection : sensor
+[2023-05-16 15:24:30,381] 21 root - INFO - Found Columns :Index(['_id', 'class', 'aa_000', 'ab_000', 'ac_000', 'ad_000', 'ae_000',
+       'af_000', 'ag_000', 'ag_001',
+       ...
+       'ee_002', 'ee_003', 'ee_004', 'ee_005', 'ee_006', 'ee_007', 'ee_008',
+       'ee_009', 'ef_000', 'eg_000'],
+      dtype='object', length=172)
+[2023-05-16 15:24:30,382] 23 root - INFO - dropping column _id
+[2023-05-16 15:24:30,576] 25 root - INFO - row and column in df : (36188, 172)
+[2023-05-16 15:24:30,576] 25 root - INFO - Save data in feature store
+[2023-05-16 15:24:32,004] 29 root - INFO - Create feature store folder if not available
+[2023-05-16 15:24:32,005] 34 root - INFO - Save df to feature store folder
+[2023-05-16 15:24:33,911] 38 root - INFO - Split dataset into train and test set
+[2023-05-16 15:24:34,308] 42 root - INFO - Create dataset directory if not available
+[2023-05-16 15:24:34,309] 47 root - INFO - Save df to feature store folder

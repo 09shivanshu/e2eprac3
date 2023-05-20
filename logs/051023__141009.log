@@ -1,0 +1,9 @@
+[2023-05-10 14:10:09,884] 9 root - INFO - Reading data from database : aps and collection : sensor
+[2023-05-10 14:10:13,587] 11 root - INFO - Found Columns :Index(['_id', 'class', 'aa_000', 'ab_000', 'ac_000', 'ad_000', 'ae_000',
+       'af_000', 'ag_000', 'ag_001',
+       ...
+       'ee_002', 'ee_003', 'ee_004', 'ee_005', 'ee_006', 'ee_007', 'ee_008',
+       'ee_009', 'ef_000', 'eg_000'],
+      dtype='object', length=172)
+[2023-05-10 14:10:13,588] 13 root - INFO - dropping column _id
+[2023-05-10 14:10:13,779] 15 root - INFO - row and column in df : (36188, 172)
