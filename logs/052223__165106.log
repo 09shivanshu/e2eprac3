@@ -1,0 +1,41 @@
+[2023-05-22 16:51:07,601] 14 root - INFO - >>>>>>>>>>>>>>>>>>>> Data Ingestion <<<<<<<<<<<<<<<<<<<<
+[2023-05-22 16:51:07,601] 20 root - INFO - Exporting collection data as pandas dataframe
+[2023-05-22 16:51:07,601] 20 root - INFO - Reading data from database : aps and collection : sensor
+[2023-05-22 16:51:10,998] 22 root - INFO - Found Columns :Index(['_id', 'class', 'aa_000', 'ab_000', 'ac_000', 'ad_000', 'ae_000',
+       'af_000', 'ag_000', 'ag_001',
+       ...
+       'ee_002', 'ee_003', 'ee_004', 'ee_005', 'ee_006', 'ee_007', 'ee_008',
+       'ee_009', 'ef_000', 'eg_000'],
+      dtype='object', length=172)
+[2023-05-22 16:51:10,998] 24 root - INFO - dropping column _id
+[2023-05-22 16:51:11,193] 26 root - INFO - row and column in df : (36188, 172)
+[2023-05-22 16:51:11,193] 26 root - INFO - Save data in feature store
+[2023-05-22 16:51:12,614] 30 root - INFO - Create feature store folder if not available
+[2023-05-22 16:51:12,614] 35 root - INFO - Save df to feature store folder
+[2023-05-22 16:51:14,591] 39 root - INFO - Split dataset into train and test set
+[2023-05-22 16:51:14,930] 43 root - INFO - Create dataset directory if not available
+[2023-05-22 16:51:14,931] 48 root - INFO - Save df to feature store folder
+[2023-05-22 16:51:16,951] 60 root - INFO - Data ingestion artifact: DataIngestionArtifact(feature_store_file_path='/config/workspace/artifact/052223___165107/data_ingestion/feature_store/sensor.csv', train_file_path='/config/workspace/artifact/052223___165107/data_ingestion/dataset/train.csv', test_file_path='/config/workspace/artifact/052223___165107/data_ingestion/dataset/test.csv')
+[2023-05-22 16:51:17,361] 17 root - INFO - >>>>>>>>>>>>>>>>>>>> Data Validation <<<<<<<<<<<<<<<<<<<<
+[2023-05-22 16:51:17,361] 115 root - INFO - Reading the base dataframe
+[2023-05-22 16:51:19,632] 118 root - INFO - Replace na value in base df
+[2023-05-22 16:51:19,632] 120 root - INFO - Drop null values column from base df
+[2023-05-22 16:51:19,858] 44 root - INFO - selecting columns name which contains null values above to 0.7
+[2023-05-22 16:51:19,859] 47 root - INFO - Columns to drop : Index(['ab_000', 'bk_000', 'bl_000', 'bm_000', 'bn_000', 'bo_000', 'bp_000',
+       'bq_000', 'br_000', 'cr_000'],
+      dtype='object')
+[2023-05-22 16:51:19,950] 123 root - INFO - Reading train dataframe
+[2023-05-22 16:51:20,339] 125 root - INFO - reading test dataframe
+[2023-05-22 16:51:20,441] 128 root - INFO - Drop null values columns from train df
+[2023-05-22 16:51:20,450] 44 root - INFO - selecting columns name which contains null values above to 0.7
+[2023-05-22 16:51:20,451] 47 root - INFO - Columns to drop : Index(['ab_000', 'bk_000', 'bl_000', 'bm_000', 'bn_000', 'bo_000', 'bp_000',
+       'bq_000', 'br_000', 'cr_000'],
+      dtype='object')
+[2023-05-22 16:51:20,461] 130 root - INFO - Drop null values columns from test df
+[2023-05-22 16:51:20,464] 44 root - INFO - selecting columns name which contains null values above to 0.7
+[2023-05-22 16:51:20,465] 47 root - INFO - Columns to drop : Index(['ab_000', 'bk_000', 'bl_000', 'bm_000', 'bn_000', 'bo_000', 'bp_000',
+       'bq_000', 'br_000', 'cr_000'],
+      dtype='object')
+[2023-05-22 16:51:20,467] 133 root - INFO - Is all required columns present in train df
+[2023-05-22 16:51:20,468] 135 root - INFO - Is all required columns present in test df
+[2023-05-22 16:51:20,468] 139 root - INFO - As all columns are available in train df hence detecting data drift
