@@ -1,0 +1,18 @@
+[2023-06-06 00:18:32,493] 22 root - INFO - Exporting collection data as pandas dataframe
+[2023-06-06 00:18:32,493] 21 root - INFO - Reading data from database: aps and collection: sensor
+[2023-06-06 00:18:35,837] 23 root - INFO - Found columns: Index(['_id', 'class', 'aa_000', 'ab_000', 'ac_000', 'ad_000', 'ae_000',
+       'af_000', 'ag_000', 'ag_001',
+       ...
+       'ee_002', 'ee_003', 'ee_004', 'ee_005', 'ee_006', 'ee_007', 'ee_008',
+       'ee_009', 'ef_000', 'eg_000'],
+      dtype='object', length=172)
+[2023-06-06 00:18:35,837] 25 root - INFO - Dropping column: _id 
+[2023-06-06 00:18:36,031] 27 root - INFO - Row and columns in df: (36188, 171)
+[2023-06-06 00:18:36,032] 28 root - INFO - Save data in feature store
+[2023-06-06 00:18:37,353] 22 root - INFO - >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> Data Validation <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+[2023-06-06 00:18:37,354] 111 root - INFO - Reading base dataframe
+[2023-06-06 00:18:39,628] 114 root - INFO - Replace na value in base df
+[2023-06-06 00:18:39,628] 116 root - INFO - Drop null values colums from base df
+[2023-06-06 00:18:39,870] 45 root - INFO - selecting column name which contains null above to 0.7
+[2023-06-06 00:18:39,870] 48 root - INFO - Columns to drop: ['ab_000', 'bn_000', 'bo_000', 'bp_000', 'bq_000', 'br_000', 'cr_000']
+[2023-06-06 00:18:39,967] 119 root - INFO - Reading train dataframe

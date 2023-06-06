@@ -13,12 +13,13 @@ from imblearn.combine import SMOTETomek
 from sklearn.impute import SimpleImputer
 from sklearn.preprocessing import RobustScaler
 from sensor.config import TARGET_COLUMN
+import pandas as pd
 
 
 
 class DataTransformation:
     
-    def __init__(self,data_transformation_config:config_entity.DataTransformationEntity,
+    def __init__(self,data_transformation_config:config_entity.DataTransformationConfig,
                     data_ingestion_artifact:artifact_entity.DataIngestionArtifact):
         try:
             self.data_transformation_config = data_transformation_config
@@ -45,7 +46,7 @@ class DataTransformation:
         try:
             #reading training and testing file
             train_df = pd.read_csv(self.data_ingestion_artifact.train_file_path)
-            test_df = pd.read_csv(self.data_ingestion_artifact.test_file_path)
+            test_df = pd.read_csv(self.data_ingestion_artifact.test_file_path)            
 
             #selecting input feature for train and test dataframe
             input_feature_train_df = train_df.drop(TARGET_COLUMN,axis =1)
@@ -61,6 +62,14 @@ class DataTransformation:
             #transformation on target columns
             target_feature_train_arr = label_encoder.transform(target_feature_train_df)
             target_feature_test_arr = label_encoder.transform(target_feature_test_df)
+
+
+            # dropping _id columns from test and train column
+            """if "_id" in target_feature_train_arr.columns:
+                logging.info(f"dropping column _id")
+                target_feature_train_arr.drop("_id",axis=1)
+                logging.info(f"row and column in df : {target_feature_train_arr.shape}")
+                return target_feature_train_arr"""
 
             transformation_pipeline = DataTransformation.get_data_tranformer_object()      
             transformation_pipeline.fit(input_feature_train_df) 
@@ -88,7 +97,7 @@ class DataTransformation:
             utils.save_numpy_array_data(file_path = self.data_transformation_config.transform_train_path,
                                          array = test_arr)
 
-            utils.save_object(file_path = self.data_transformation_config.transformation_object_path,
+            utils.save_object(file_path = self.data_transformation_config.transform_object_path,
                                  obj = transformation_pipeline)
 
             utils.save_object(file_path = self.data_transformation_config.target_encoder_path,

@@ -9,7 +9,7 @@ from sklearn.metrics import f1_score
 class ModelTrainer:
 
 
-    def __init__(self,model_trainer_config:config_entity.ModelTrainerEntity,
+    def __init__(self,model_trainer_config:config_entity.ModelTrainerConfig,
                     data_transformation_artifact:artifact_entity.DataTransformationArtifact    
         ):
             try:

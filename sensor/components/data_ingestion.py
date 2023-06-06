@@ -30,6 +30,17 @@ class DataIngestion:
             #replace na with Nan
             df.replace(to_replace="na",value=np.NAN,inplace=True)
 
+            # dropping _id columns from test and train column
+            if "_id" in df.columns:
+                logging.info(f"dropping column _id")
+                df.drop("_id",axis=1)
+                logging.info(f"row and column in df : {df.shape}")
+            return df
+
+            print (df)
+            
+           
+
             #Save data in feature store
             logging.info("Create feature store folder if not available")
             #Create feature store folder if not available
@@ -49,10 +60,15 @@ class DataIngestion:
             dataset_dir = os.path.dirname(self.data_ingestion_config.train_file_path)
             os.makedirs(dataset_dir,exist_ok=True)
 
+            print (train_df)
+            print (test_df)
+
             logging.info("Save df to feature store folder")
             #Save df to feature store folder
             train_df.to_csv(path_or_buf=self.data_ingestion_config.train_file_path,index=False,header=True)
             test_df.to_csv(path_or_buf=self.data_ingestion_config.test_file_path,index=False,header=True)
+
+            
             
             #Prepare artifact
 
