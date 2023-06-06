@@ -1,0 +1,4 @@
+[2023-06-05 23:51:48,798] 22 root - INFO - Exporting collection data as pandas dataframe
+[2023-06-05 23:51:48,798] 22 root - INFO - Reading data from database : aps and collection : sensor
+[2023-06-05 23:51:48,802] 24 root - INFO - Found Columns :RangeIndex(start=0, stop=0, step=1)
+[2023-06-05 23:51:48,802] 28 root - INFO - Save data in feature store

@@ -2,33 +2,33 @@ import pandas as pd
 from sensor.logger import logging
 from sensor.exception import SensorException
 from sensor.config import mongoclient
-import sys,os
+import os,sys
 import yaml
-import dill
 import numpy as np
+import dill
 
 def get_collection_as_dataframe(database_name:str,collection_name:str)->pd.DataFrame:
-    '''
-    Description: This funtion return collection as dataframe
+    """
+    Description: This function return collection as dataframe
     =========================================================
     Params:
-    database_name : database name
+    database_name: database name
     collection_name: collection name
     =========================================================
     return Pandas dataframe of a collection
-
-    '''
+    """
     try:
-        logging.info(f"Reading data from database : {database_name} and collection : {collection_name}")
+        logging.info(f"Reading data from database: {database_name} and collection: {collection_name}")
         df = pd.DataFrame(list(mongoclient[database_name][collection_name].find()))
-        logging.info(f"Found Columns :{df.columns}")
+        logging.info(f"Found columns: {df.columns}")
         if "_id" in df.columns:
-            logging.info(f"dropping column _id")
-            df.drop("_id",axis=1)
-        logging.info(f"row and column in df : {df.shape}")
+            logging.info(f"Dropping column: _id ")
+            df = df.drop("_id",axis=1)
+        logging.info(f"Row and columns in df: {df.shape}")
         return df
     except Exception as e:
         raise SensorException(e, sys)
+    
 
 def write_yaml_file(file_path,data:dict):
     try:
@@ -42,49 +42,55 @@ def write_yaml_file(file_path,data:dict):
 def convert_columns_float(df:pd.DataFrame,exclude_columns:list)->pd.DataFrame:
     try:
         for column in df.columns:
-            if column == "_id":
-                pass
-            elif column not in exclude_columns:
+            if column not in exclude_columns:
                 df[column]=df[column].astype('float')
         return df
     except Exception as e:
         raise e
 
-def target_column_encoding(target_feature):
-    target_feature.replace()
 
-def save_object(file_path : str, obj : object) -> None:
+def save_object(file_path: str, obj: object) -> None:
     try:
-        logging.info(f"Entered the save_object method of MainUtils class")
-        os.makedirs(os.path.dirname(file_path),exist_ok = True)
-        with open(file_path = "wb") as file_obj:
+        logging.info("Entered the save_object method of utils")
+        os.makedirs(os.path.dirname(file_path), exist_ok=True)
+        with open(file_path, "wb") as file_obj:
             dill.dump(obj, file_obj)
-        logging.info(f"Exited the save_object of method of Main_Utils class")
+        logging.info("Exited the save_object method of utils")
     except Exception as e:
-        raise SensorException(e, sys)
+        raise SensorException(e, sys) from e
 
-def load_object(file_path: str , )-> object:
+
+def load_object(file_path: str, ) -> object:
     try:
         if not os.path.exists(file_path):
-            raise Exception(f"the file : {file_path} is not exists")
+            raise Exception(f"The file: {file_path} is not exists")
         with open(file_path, "rb") as file_obj:
             return dill.load(file_obj)
     except Exception as e:
-        raise SensorException(e, sys)
+        raise SensorException(e, sys) from e
 
-def save_numpy_array_data(file_path: str, array : np.array):
+def save_numpy_array_data(file_path: str, array: np.array):
     """
     Save numpy array data to file
-    file_path : str location of file to save
-    array : np.array data to save  
+    file_path: str location of file to save
+    array: np.array data to save
     """
-
     try:
         dir_path = os.path.dirname(file_path)
-        os.makedirs(dir_path, exists_ok = True)
+        os.makedirs(dir_path, exist_ok=True)
         with open(file_path, "wb") as file_obj:
             np.save(file_obj, array)
     except Exception as e:
-        raise SensorException(e, sys)
+        raise SensorException(e, sys) from e
 
-
+def load_numpy_array_data(file_path: str) -> np.array:
+    """
+    load numpy array data from file
+    file_path: str location of file to load
+    return: np.array data loaded
+    """
+    try:
+        with open(file_path, "rb") as file_obj:
+            return np.load(file_obj)
+    except Exception as e:
+        raise SensorException(e, sys) from e
