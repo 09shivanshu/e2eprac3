@@ -57,16 +57,15 @@ class DataIngestion:
             
             logging.info("create dataset directory folder if not available")
             #create dataset directory folder if not available
-            dataset_dir = os.path.dirname(self.data_ingestion_config.train_file_path)
+            dataset_dir = os.path.dirname(self.data_ingestion_config.train_file_path1)
             os.makedirs(dataset_dir,exist_ok=True)
 
-            print (train_df)
-            print (test_df)
+            
 
             logging.info("Save df to feature store folder")
             #Save df to feature store folder
-            train_df.to_csv(path_or_buf=self.data_ingestion_config.train_file_path,index=False,header=True)
-            test_df.to_csv(path_or_buf=self.data_ingestion_config.test_file_path,index=False,header=True)
+            train_df.to_csv(path_or_buf=self.data_ingestion_config.train_file_path1,index=False,header=True)
+            test_df.to_csv(path_or_buf=self.data_ingestion_config.test_file_path1,index=False,header=True)
 
             
             
@@ -74,8 +73,8 @@ class DataIngestion:
 
             data_ingestion_artifact = artifact_entity.DataIngestionArtifact(
                 feature_store_file_path=self.data_ingestion_config.feature_store_file_path,
-                train_file_path=self.data_ingestion_config.train_file_path, 
-                test_file_path=self.data_ingestion_config.test_file_path)
+                train_file_path1=self.data_ingestion_config.train_file_path1, 
+                test_file_path1=self.data_ingestion_config.test_file_path1)
 
             logging.info(f"Data ingestion artifact: {data_ingestion_artifact}")
             return data_ingestion_artifact

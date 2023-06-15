@@ -117,9 +117,9 @@ class DataValidation:
             base_df=self.drop_missing_values_columns(df=base_df,report_key_name="missing_values_within_base_dataset")
 
             logging.info(f"Reading train dataframe")
-            train_df = pd.read_csv(self.data_ingestion_artifact.train_file_path)
+            train_df = pd.read_csv(self.data_ingestion_artifact.train_file_path1)
             logging.info(f"Reading test dataframe")
-            test_df = pd.read_csv(self.data_ingestion_artifact.test_file_path)
+            test_df = pd.read_csv(self.data_ingestion_artifact.test_file_path1)
 
             logging.info(f"Drop null values colums from train df")
             train_df = self.drop_missing_values_columns(df=train_df,report_key_name="missing_values_within_train_dataset")

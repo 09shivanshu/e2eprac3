@@ -45,8 +45,8 @@ class DataTransformation:
     def initiaite_data_trasformation(self,)-> artifact_entity.DataTransformationArtifact:
         try:
             #reading training and testing file
-            train_df = pd.read_csv(self.data_ingestion_artifact.train_file_path)
-            test_df = pd.read_csv(self.data_ingestion_artifact.test_file_path)            
+            train_df = pd.read_csv(self.data_ingestion_artifact.train_file_path1)
+            test_df = pd.read_csv(self.data_ingestion_artifact.test_file_path1)            
 
             #selecting input feature for train and test dataframe
             input_feature_train_df = train_df.drop(TARGET_COLUMN,axis =1)
